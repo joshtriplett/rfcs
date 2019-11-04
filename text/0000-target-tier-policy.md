@@ -10,8 +10,8 @@ We should have an official, objective policy for adding new (tier 3) targets,
 and for raising targets to tier 2 (with rustup builds) or even tier 1.
 
 # Motivation
-[motivation]: #motivation
 
+[motivation]: #motivation
 Rust developers regularly implement new targets in the Rust compiler, and
 reviewers of pull requests for such new targets would like a clear, consistent
 policy to cite for accepting or rejecting such targets. Currently, individual
@@ -47,44 +47,57 @@ to ongoing Rust development.
 # Reference-level explanation
 [reference-level-explanation]: #reference-level-explanation
 
-Requirements for each tier:
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
+"SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
+interpreted as described in [IETF RFC 2119].
+
+[ietf rfc 2119]: https://tools.ietf.org/html/rfc2119
 
 ## Tier 3 target policy
 
 At this tier, the Rust project provides no official support for a target, so we
 place minimal requirements on the introduction of targets.
 
-- No central decision is required to add a new tier 3 target. Reviewers may
-  always use their own best judgment regarding the quality of work, and the
-  suitability of a target for the Rust project.
-- If a reviewer wishes to consult a broader team for additional guidance, they
-  should contact the compiler team.
-- If a proposed target or target-specific patch substantially changes code
-  shared with other targets (not just target-specific code), the reviewer
-  should consult the compiler team.
-- If the proposer of a target wishes to appeal the rejection of a target, they
-  may contact the compiler team.
-- Tier 3 targets must use naming consistent with any existing targets; for
-  instance, a target for a similar CPU or OS should not gratuitously use an
-  inconsistent name for that CPU or OS. Targets should normally use the same
-  names as used elsewhere in the broader ecosystem (such as in other
-  toolchains), unless they have a very good reason to diverge.
-- Tier 3 targets may have unusual requirements to build or use, but must not
-  create legal issues for the Rust project or for developers who work on those
-  targets.
-- Where possible, tier 3 targets may wish to provide documentation for the Rust
-  community for how to build and run tests for the platform, ideally using
-  emulation.
-- Tier 3 targets must not impose burden on the authors of pull requests, or
-  other developers in the community, to maintain the target. In particular,
-  do not post comments (automated or manual) on a PR that suggests a block on
-  the PR based on the target. (A PR author may choose to help with a tier 3
-  target but is not required to.)
-- Patches adding or updating tier 3 targets must not break any existing target.
-- If a tier 3 target shows no signs of activity and has not built for some
-  time, and removing it would improve the quality of the Rust codebase, we may
-  post a PR to remove it; any such PR will be CCed to people who have
-  previously worked on the platform, to check potential interest.
+No central decision is required to add a new tier 3 target. Reviewers may always
+use their own best judgment regarding the quality of work, and the suitability
+of a target for the Rust project. If a reviewer wishes to consult a broader team
+for additional guidance, they should contact the compiler team. If a proposed
+target or target-specific patch substantially changes code shared with other
+targets (not just target-specific code), the reviewer should consult the
+compiler team. If the proposer of a target wishes to appeal the rejection of a
+target, they may contact the compiler team.
+
+A tier 3 platform **MUST**
+
+- Use naming consistent with existing targets; for instance, a target for a
+  similar CPU or OS should not gratuitously use an inconsistent name for that
+  CPU or OS. Targets should normally use the same names as used elsewhere in the
+  broader ecosystem (such as in other toolchains), unless they have a very good
+  reason to diverge.
+
+A tier 3 platform **MUST NOT**
+
+- Break any already existing targets.
+- Create legal issues for the Rust project or for developers who work on
+  those targets.
+- Impose burden on the authors of pull requests, or other developers in the
+  community, to maintain the target. In particular, do not post comments
+  (automated or manual) on a PR that suggests a block on the PR based on the
+  target. (A PR author may choose to help with a tier 3 target but is not
+  required to.)
+
+A tier 3 platform **SHOULD**
+
+- Where possible, provide documentation for the Rust community for how to build
+  and run tests for the platform, ideally using emulation.
+
+A tier 3 platform **MAY**
+
+- Have unusual requirements to build or use.
+- Be removed if a tier 3 target shows no signs of activity and has not built for
+  some time, and removing it would improve the quality of the Rust codebase. Any
+  such PR will be CCed to people who have previously worked on the platform, to
+  check potential interest.
 
 ## Tier 2 target policy
 
@@ -184,7 +197,6 @@ determined by the judgment of the approving teams.
 The set of approving teams for each tier arose out of discussion with the
 various teams involved with aspects of the Rust project impacted by new
 targets.
-
 
 # Prior art
 [prior-art]: #prior-art
